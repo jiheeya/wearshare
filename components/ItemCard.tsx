@@ -34,11 +34,11 @@ export default function ItemCard({ item }: { item: Item }) {
         <h3 className="font-semibold text-sm mt-0.5 line-clamp-1">{item.title}</h3>
         <p className="text-xs text-stone-400 mt-0.5">사이즈 {item.size}</p>
         <p className="text-sm font-bold text-stone-800 mt-1">
-          {item.rental_fee_per_day > 0
+          {(item.rental_fee_per_day ?? 0) > 0
             ? `${item.rental_fee_per_day.toLocaleString()}원/일`
             : "대여비 무료"}
         </p>
-        <p className="text-xs text-stone-400">보증금 {item.deposit_amount.toLocaleString()}원</p>
+        <p className="text-xs text-stone-400">보증금 {(item.deposit_amount ?? 0).toLocaleString()}원</p>
       </div>
     </Link>
   );
