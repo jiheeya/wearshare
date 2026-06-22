@@ -3,13 +3,12 @@ import { NextResponse, type NextRequest } from "next/server";
 
 const PROTECTED = ["/items/new", "/my"];
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-  // 환경변수 없으면 그냥 통과
   if (!url || !key) return supabaseResponse;
 
   try {
@@ -37,7 +36,6 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(url);
     }
   } catch {
-    // 미들웨어 오류 시 그냥 통과 (페이지에서 개별 처리)
     return NextResponse.next({ request });
   }
 
