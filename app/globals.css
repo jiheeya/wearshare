@@ -18,3 +18,14 @@ body {
   color: #1C1007;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* 크림 부티크 테마 — Tailwind arbitrary value 미지원 환경 대비 */
+.bg-cream { background-color: #FAF7F2 !important; }
+.bg-cream-dark { background-color: #F0E8DF !important; }
+.bg-card { background-color: #FFFCF9 !important; }
+.text-brand { color: #9B2335 !important; }
+.bg-brand { background-color: #9B2335 !important; }
+.border-warm { border-color: #E8DDD0 !important; }
+
+header { background-color: #FFFCF9; border-bottom: 1px solid #E8DDD0; }
+footer { background-color: #FFFCF9; border-top: 1px solid #E8DDD0; }
