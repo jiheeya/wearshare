@@ -30,6 +30,7 @@ export default function ItemForm({ userId, item, availabilities = [] }: Props) {
   const [category, setCategory] = useState<ItemCategory>(item?.category ?? "graduation");
   const [size, setSize] = useState(item?.size ?? "");
   const [deposit, setDeposit] = useState(String(item?.deposit_amount ?? 0));
+  const [rentalFeePerDay, setRentalFeePerDay] = useState(String(item?.rental_fee_per_day ?? 0));
   const [handoverDays, setHandoverDays] = useState(String(item?.handover_days ?? 1));
   const [existingImages, setExistingImages] = useState<string[]>(item?.images ?? []);
   const [newFiles, setNewFiles] = useState<File[]>([]);
@@ -96,6 +97,7 @@ export default function ItemForm({ userId, item, availabilities = [] }: Props) {
             category,
             size,
             deposit_amount: Number(deposit),
+            rental_fee_per_day: Number(rentalFeePerDay),
             handover_days: Number(handoverDays),
             images: allImages,
           })
@@ -121,6 +123,7 @@ export default function ItemForm({ userId, item, availabilities = [] }: Props) {
             category,
             size,
             deposit_amount: Number(deposit),
+            rental_fee_per_day: Number(rentalFeePerDay),
             handover_days: Number(handoverDays),
             images: allImages,
           })
@@ -212,7 +215,21 @@ export default function ItemForm({ userId, item, availabilities = [] }: Props) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1.5">수령/반납 버퍼 일수</label>
+          <label className="block text-sm font-medium mb-1.5">하루 대여비 (원) *</label>
+          <input
+            type="number"
+            value={rentalFeePerDay}
+            onChange={(e) => setRentalFeePerDay(e.target.value)}
+            required
+            min={0}
+            placeholder="10000"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-rose-400"
+          />
+          <p className="text-xs text-gray-400 mt-1">대여 일수에 따라 자동으로 계산돼요</p>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium mb-1.5">옷 전달에 필요한 여유일</label>
           <select
             value={handoverDays}
             onChange={(e) => setHandoverDays(e.target.value)}
@@ -220,10 +237,11 @@ export default function ItemForm({ userId, item, availabilities = [] }: Props) {
           >
             {[1, 2, 3].map((d) => (
               <option key={d} value={d}>
-                {d}일 (대여 전후 {d}일 블록)
+                앞뒤로 {d}일씩 — 택배/직거래 여유 {d}일
               </option>
             ))}
           </select>
+          <p className="text-xs text-gray-400 mt-1">이 기간엔 다른 대여 신청을 받지 않아요</p>
         </div>
 
         <div>

@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const message = searchParams.get("message");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -40,6 +42,12 @@ export default function LoginPage() {
         wearshare에 오신 것을 환영해요
       </p>
 
+      {message && (
+        <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg text-sm text-green-700">
+          {message}
+        </div>
+      )}
+
       {error && (
         <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-600">
           {error}
@@ -54,7 +62,7 @@ export default function LoginPage() {
             type="email"
             required
             placeholder="email@example.com"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400 text-sm"
+            className="w-full px-3 py-2 border border-[#E8DDD0] bg-[#FFFCF9] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9B2335]/30 focus:border-[#9B2335] text-sm"
           />
         </div>
         <div>
@@ -64,13 +72,13 @@ export default function LoginPage() {
             type="password"
             required
             placeholder="비밀번호"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400 text-sm"
+            className="w-full px-3 py-2 border border-[#E8DDD0] bg-[#FFFCF9] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9B2335]/30 focus:border-[#9B2335] text-sm"
           />
         </div>
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-rose-500 text-white py-2.5 rounded-lg font-medium hover:bg-rose-600 transition-colors disabled:opacity-50"
+          className="w-full bg-[#9B2335] text-white py-2.5 rounded-lg font-medium hover:bg-[#7A1A29] transition-colors disabled:opacity-50"
         >
           {loading ? "처리 중..." : "로그인"}
         </button>
@@ -78,7 +86,7 @@ export default function LoginPage() {
 
       <p className="mt-6 text-center text-sm text-gray-500">
         계정이 없으신가요?{" "}
-        <Link href="/signup" className="text-rose-500 font-medium hover:underline">
+        <Link href="/signup" className="text-[#9B2335] font-medium hover:underline">
           회원가입
         </Link>
       </p>

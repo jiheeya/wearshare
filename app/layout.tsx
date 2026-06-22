@@ -13,10 +13,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko" className={`${geist.variable} h-full`}>
-      <body className="min-h-full flex flex-col bg-gray-50 text-gray-900 font-sans antialiased">
+      <body className="min-h-full flex flex-col bg-[#FAF7F2] text-[#1C1007] font-sans antialiased">
         <Nav />
         <main className="flex-1">{children}</main>
-        <footer className="py-6 text-center text-sm text-gray-400 border-t bg-white">
+        <footer className="py-6 text-center text-sm text-stone-400 border-t border-[#E8DDD0] bg-[#FFFCF9]">
           © 2024 wearshare
         </footer>
       </body>

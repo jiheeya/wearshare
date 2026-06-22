@@ -47,7 +47,7 @@ export default async function ItemsPage({
           name="q"
           defaultValue={params.q}
           placeholder="의상 이름으로 검색..."
-          className="w-full max-w-sm px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-rose-400"
+          className="w-full max-w-sm px-4 py-2 border border-[#E8DDD0] bg-[#FFFCF9] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#9B2335]/30 focus:border-[#9B2335]"
         />
         {params.category && <input type="hidden" name="category" value={params.category} />}
       </form>
@@ -62,8 +62,8 @@ export default async function ItemsPage({
               href={cat.value ? `/items?category=${cat.value}` : "/items"}
               className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 active
-                  ? "bg-rose-500 text-white"
-                  : "bg-white border text-gray-600 hover:border-rose-300"
+                  ? "bg-[#9B2335] text-white"
+                  : "bg-[#FFFCF9] border border-[#E8DDD0] text-stone-600 hover:border-[#9B2335] hover:text-[#9B2335]"
               }`}
             >
               {cat.label}
@@ -80,7 +80,7 @@ export default async function ItemsPage({
           ))}
         </div>
       ) : (
-        <div className="text-center py-20 text-gray-400">
+        <div className="text-center py-20 text-stone-400">
           <div className="text-5xl mb-3">👗</div>
           <p>등록된 의상이 없어요</p>
         </div>

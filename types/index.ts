@@ -48,6 +48,7 @@ export interface Database {
           images: string[];
           handover_days: number;
           deposit_amount: number;
+          rental_fee_per_day: number;
           is_active: boolean;
           created_at: string;
         };
@@ -61,6 +62,7 @@ export interface Database {
           images?: string[];
           handover_days?: number;
           deposit_amount: number;
+          rental_fee_per_day?: number;
           is_active?: boolean;
           created_at?: string;
         };
@@ -72,6 +74,7 @@ export interface Database {
           images?: string[];
           handover_days?: number;
           deposit_amount?: number;
+          rental_fee_per_day?: number;
           is_active?: boolean;
         };
         Relationships: [];

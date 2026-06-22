@@ -53,7 +53,7 @@ export default function SignupPage() {
             type="email"
             required
             placeholder="email@example.com"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400 text-sm"
+            className="w-full px-3 py-2 border border-[#E8DDD0] bg-[#FFFCF9] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9B2335]/30 focus:border-[#9B2335] text-sm"
           />
         </div>
         <div>
@@ -64,13 +64,13 @@ export default function SignupPage() {
             required
             minLength={6}
             placeholder="6자 이상"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-400 text-sm"
+            className="w-full px-3 py-2 border border-[#E8DDD0] bg-[#FFFCF9] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9B2335]/30 focus:border-[#9B2335] text-sm"
           />
         </div>
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-rose-500 text-white py-2.5 rounded-lg font-medium hover:bg-rose-600 transition-colors disabled:opacity-50"
+          className="w-full bg-[#9B2335] text-white py-2.5 rounded-lg font-medium hover:bg-[#7A1A29] transition-colors disabled:opacity-50"
         >
           {loading ? "처리 중..." : "가입하기"}
         </button>
@@ -78,7 +78,7 @@ export default function SignupPage() {
 
       <p className="mt-6 text-center text-sm text-gray-500">
         이미 계정이 있으신가요?{" "}
-        <Link href="/login" className="text-rose-500 font-medium hover:underline">
+        <Link href="/login" className="text-[#9B2335] font-medium hover:underline">
           로그인
         </Link>
       </p>

@@ -18,6 +18,7 @@ create table items (
   images text[] default '{}',
   handover_days int not null default 1,
   deposit_amount int not null default 0,
+  rental_fee_per_day int not null default 0,
   is_active boolean not null default true,
   created_at timestamptz default now()
 );
