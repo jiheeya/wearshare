@@ -1,6 +1,5 @@
 import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { createClient } from "@/lib/supabase/server";
 import { getBlockedDates } from "@/lib/availability";
 import RentalPanel from "@/components/RentalPanel";
@@ -58,13 +57,13 @@ export default async function ItemDetailPage({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Images */}
         <div className="space-y-2">
-          <div className="aspect-square bg-gray-100 rounded-xl overflow-hidden relative">
+          <div className="aspect-square bg-gray-100 rounded-xl overflow-hidden">
             {item.images[0] ? (
-              <Image
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
                 src={item.images[0]}
                 alt={item.title}
-                fill
-                className="object-cover"
+                className="w-full h-full object-cover"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-6xl text-gray-300">
@@ -75,8 +74,9 @@ export default async function ItemDetailPage({
           {item.images.length > 1 && (
             <div className="flex gap-2 overflow-x-auto">
               {item.images.slice(1).map((url, i) => (
-                <div key={i} className="w-20 h-20 shrink-0 rounded-lg overflow-hidden relative">
-                  <Image src={url} alt="" fill className="object-cover" />
+                <div key={i} className="w-20 h-20 shrink-0 rounded-lg overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={url} alt="" className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
